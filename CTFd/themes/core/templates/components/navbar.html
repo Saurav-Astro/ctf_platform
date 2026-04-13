@@ -5,11 +5,11 @@
         <img
             class="img-responsive ctf_logo"
             src="{{ url_for('views.files', path=Configs.ctf_logo) }}"
-            alt="{{ Configs.ctf_name }}"
+            alt="DG Sentinels"
             height="25"
         >
       {% else %}
-        {{ Configs.ctf_name }}
+        DG Sentinels
       {% endif %}
     </a>
 
@@ -57,6 +57,12 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('challenges.listing') }}">
             {% trans %}Challenges{% endtrans %}
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('views.rules') }}">
+            Rules
           </a>
         </li>
       </ul>

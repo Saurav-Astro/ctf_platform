@@ -388,6 +388,11 @@ def privacy():
         abort(404)
 
 
+
+@views.route("/rules")
+def rules():
+    return render_template("rules.html", title="Rules")
+
 @views.route("/files", defaults={"path": ""})
 @views.route("/files/<path:path>")
 def files(path):
@@ -557,3 +562,4 @@ def robots():
     r = make_response(text, 200)
     r.mimetype = "text/plain"
     return r
+

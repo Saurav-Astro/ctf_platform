@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{{ title or Configs.ctf_name }}</title>
+  <title>DG Sentinels{% if title %} | {{ title }}{% endif %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="{{ Configs.ctf_small_icon }}" type="image/x-icon">
@@ -11,6 +11,31 @@
   {% block stylesheets %}
     {{ Assets.css("assets/scss/main.scss") }}
   {% endblock %}
+
+  <style>
+    html,
+    body {
+      min-height: 100%;
+      background:
+        linear-gradient(rgba(5, 8, 14, 0.12), rgba(5, 8, 14, 0.12)),
+        url("https://images.hdqwalls.com/download/spider-man-every-city-needs-a-spider-yj-1920x1080.jpg") center/cover fixed no-repeat !important;
+      background-color: #0a0f18 !important;
+    }
+
+    body {
+      background-attachment: fixed !important;
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
+      color: #eef4ff;
+    }
+
+    main,
+    .footer {
+      background: transparent !important;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
 
   {{ Plugins.styles }}
 
@@ -53,7 +78,7 @@
   <div class="container text-center">
     <a href="https://ctfd.io" class="text-secondary">
       <small class="text-muted">
-        {% trans %}Powered by CTFd{% endtrans %}
+        {% trans %}Powered by IDevSec{% endtrans %}
       </small>
     </a>
   </div>
@@ -70,3 +95,7 @@
 {{ Configs.theme_footer }}
 </body>
 </html>
+
+
+
+
