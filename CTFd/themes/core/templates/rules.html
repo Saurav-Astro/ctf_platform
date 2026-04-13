@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <style>
+    .rules-hero {
+      border-bottom-color: rgba(110, 168, 255, 0.14) !important;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="jumbotron rules-hero">
+    <div class="container">
+      <div class="rules-kicker">DG Sentinels Protocol</div>
+      <h1>CTF Rules</h1>
+      <p class="lead">Play fair, stay in scope, and keep the competition safe for every operator.</p>
+    </div>
+  </div>
+
+  <div class="container rules-page py-4">
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="card rules-card">
+          <div class="card-body">
+            <h3>Core Rules</h3>
+            <ul class="rules-list">
+              <li>Do not attack, disrupt, or interfere with the CTF infrastructure, challenge services, or other teams.</li>
+              <li>No denial-of-service, flooding, brute-force abuse, or scanning outside the intended challenge scope.</li>
+              <li>Do not share flags, exploits, hints, or full solutions with other teams or spectators.</li>
+              <li>Use only your own account and your own team workspace.</li>
+              <li>Any attempt to manipulate the scoreboard, accounts, submissions, or platform data is forbidden.</li>
+              <li>Use the challenge files, hints, endpoints, and provided tooling as intended by the challenge authors.</li>
+              <li>If a challenge seems broken, report it to the organizers instead of exploiting the issue for points.</li>
+              <li>Respect organizer decisions on disputes, invalid submissions, and rule violations.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card rules-card mt-4">
+          <div class="card-body">
+            <h3>Fair Play</h3>
+            <ul class="rules-list">
+              <li>Collaborate only within your own team.</li>
+              <li>Reverse engineering, web testing, cryptography, forensics, OSINT, and pwn are allowed only within the challenge boundaries.</li>
+              <li>Automated tooling is fine when it stays in scope and does not harm the platform.</li>
+              <li>Flags must be submitted exactly as provided by the challenge.</li>
+              <li>Keep findings private until the event ends unless organizers say otherwise.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card rules-card rules-side">
+          <div class="card-body">
+            <h3>Quick Notes</h3>
+            <div class="rule-pill">Stay in scope</div>
+            <div class="rule-pill">No team sharing</div>
+            <div class="rule-pill">No infra attacks</div>
+            <div class="rule-pill">Report bugs</div>
+            <div class="rule-pill">Submit exact flags</div>
+            <hr class="my-4">
+            <p class="mb-0 text-muted">Need help? Contact the organizers before trying anything risky. We'll keep the arena fair and the hunt sharp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
