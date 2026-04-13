@@ -54,6 +54,20 @@
               {{ challenge.value }}
             </h3>
 
+            {% if solves != None %}
+            <div class="challenge-summary text-center pt-2 pb-3">
+              <span class="challenge-summary-pill">
+                <i class="fa-solid fa-users"></i>
+                {{ ngettext("%(num)d Solve", "%(num)d Solves", solves) }}
+              </span>
+              {% if solved_by_me %}
+                <span class="challenge-summary-pill challenge-summary-pill--success">
+                  <i class="fa-solid fa-circle-check"></i>
+                  Solved by you
+                </span>
+              {% endif %}
+            </div>
+            {% endif %}
 
             {% if tags %}
               <div class="challenge-tags text-center pt-2 pb-3">
@@ -172,7 +186,7 @@
                       id="challenge-input" class="challenge-input form-control"
                       type="text" name="submission"
                       @keyup.enter="submitChallenge()"
-                      placeholder="{% trans %}Flag{% endtrans %}" x-model="submission"
+                      placeholder="{% trans %}Flag{% endtrans %}" x-model="submission" autofocus
                   >
                 {% endblock %}
               </div>

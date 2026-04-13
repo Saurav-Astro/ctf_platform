@@ -116,6 +116,7 @@ Alpine.data("Challenge", () => ({
 
   async showChallenge() {
     new Tab(this.$el).show();
+    document.getElementById('challenge-input')?.focus();
   },
 
   async showSolves() {
@@ -166,7 +167,8 @@ Alpine.data("Challenge", () => ({
   },
 
   async nextChallenge() {
-    let modal = Modal.getOrCreateInstance("[x-ref='challengeWindow']");
+            let challengeWindow = document.querySelector("[x-ref='challengeWindow']");
+        let modal = Modal.getOrCreateInstance(challengeWindow, { backdrop: false, focus: true });
 
     // TODO: Get rid of this private attribute access
     // See https://github.com/twbs/bootstrap/issues/31266
@@ -290,6 +292,17 @@ Alpine.data("ChallengeBoard", () => ({
     }
   },
 
+  getSolvedChallengeCount() {
+    return this.challenges.filter(challenge => challenge.solved_by_me).length;
+  },
+
+  getTotalSolveCount() {
+    return this.challenges.reduce((total, challenge) => total + (challenge.solves || 0), 0);
+  },
+
+  getChallengeSolveCount(challenge) {
+    return challenge.solves || 0;
+  },
   getCategories() {
     const categories = [];
 
@@ -349,7 +362,8 @@ Alpine.data("ChallengeBoard", () => ({
 
       // nextTick is required here because we're working in a callback
       Alpine.nextTick(() => {
-        let modal = Modal.getOrCreateInstance("[x-ref='challengeWindow']");
+        let challengeWindow = document.querySelector("[x-ref='challengeWindow']");
+        let modal = Modal.getOrCreateInstance(challengeWindow, { backdrop: false, focus: true });
         // TODO: Get rid of this private attribute access
         // See https://github.com/twbs/bootstrap/issues/31266
         modal._element.addEventListener(
@@ -361,6 +375,14 @@ Alpine.data("ChallengeBoard", () => ({
           { once: true },
         );
         modal.show();
+        document.querySelectorAll(".modal-backdrop").forEach(backdrop => backdrop.remove());
+        document.body.classList.remove("modal-open");
+        modal._element.addEventListener(
+          "shown.bs.modal",
+          () => setTimeout(() => document.getElementById("challenge-input")?.focus(), 0),
+          { once: true },
+        );
+        document.getElementById("challenge-input")?.focus();
         history.replaceState(null, null, `#${challenge.data.name}-${challengeId}`);
       });
     });

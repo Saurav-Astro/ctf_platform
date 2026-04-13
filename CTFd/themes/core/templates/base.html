@@ -27,13 +27,13 @@
       background-repeat: no-repeat !important;
       background-size: cover !important;
       color: #eef4ff;
+      isolation: isolate;
     }
 
     main,
     .footer {
       background: transparent !important;
       position: relative;
-      z-index: 1;
     }
   </style>
 
@@ -64,7 +64,7 @@
 
   {{ Configs.theme_header }}
 </head>
-<body>
+<body{% if request.endpoint == 'challenges.listing' %} class="challenges-page"{% endif %}>
 {% include "components/navbar.html" %}
 
 <main role="main">
@@ -95,7 +95,4 @@
 {{ Configs.theme_footer }}
 </body>
 </html>
-
-
-
 
